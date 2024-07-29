@@ -4,7 +4,7 @@ let
     owner = "OliverKillane";
     repo = "velox";
     rev = "stemmer_non_bundled";
-    sha256 = "sha256-XtKeQutJ1x8XdrSsG8iAFP3ewGKA8KfRN9Z5314iqh4=";
+    sha256 = "sha256-neVbycp9Ixswj+GkruEq2q2TluZWFUQDgzOG/2W+aIo=";
   };
 in
 pkgs.stdenv.mkDerivation {
@@ -17,6 +17,7 @@ pkgs.stdenv.mkDerivation {
 
   nativeBuildInputs = [
     pkgs.cmake 
+    pkgs.gcc12
   ];
 
   buildInputs = with pkgs; [
