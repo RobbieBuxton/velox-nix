@@ -11,6 +11,6 @@
       pkgs = import nixpkgs { inherit system; };
     in
     {
-      packages.${system} = pkgs.callPackage ./package.nix {};
+      packages.${system}.default = pkgs.callPackage ./velox.nix {};
     };
 }

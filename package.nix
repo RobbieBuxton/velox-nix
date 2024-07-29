@@ -1,4 +1,0 @@
-{ pkgs }:
-{
-  default = pkgs.hello;
-}
