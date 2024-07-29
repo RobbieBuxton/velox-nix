@@ -1,10 +1,10 @@
 { pkgs }:
 let
   src = pkgs.fetchFromGitHub {
-    owner = "facebookincubator";
+    owner = "OliverKillane";
     repo = "velox";
-    rev = "master";
-    sha256 = "sha256-Ln+o5IsiGklfYYzgqhebsGUQrfTNBT+5uOqZ2k3lA54=";
+    rev = "stemmer_non_bundled";
+    sha256 = "sha256-XtKeQutJ1x8XdrSsG8iAFP3ewGKA8KfRN9Z5314iqh4=";
   };
 in
 pkgs.stdenv.mkDerivation {
@@ -13,13 +13,32 @@ pkgs.stdenv.mkDerivation {
 
   src = src;
 
-  buildInputs = [
-    # pkgs.cmake Example not needed as part of stdenv
+  dontUseCmakeConfigure=true;
+
+  nativeBuildInputs = [
+    pkgs.cmake 
+  ];
+
+  buildInputs = with pkgs; [
+    boost
+    gflags
+    glog
+    openssl_3_3
+    fmt
+    pkg-config
+    re2
+    simdjson
+    folly
+    bison
+    flex
+    double-conversion
+    xsimd
+    libstemmer
   ];
 
   buildPhase = ''
-    cd build
-    make
+    export VELOX_DEPENDENCY_SOURCE=SYSTEM
+    make minimal
   '';
 
   # installPhase = ''
