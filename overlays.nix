@@ -44,4 +44,6 @@ self: super: {
   #   # Tests fail for 'cmake_package_config_generate'
   #   doCheck = false;
   # });
+
+  re2 = super.callPackage ./re2_2022_02_01_overlay.nix {};
 }

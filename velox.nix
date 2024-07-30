@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation {
 
   buildPhase = ''
     export VELOX_DEPENDENCY_SOURCE=SYSTEM
-    make minimal
+    NUM_THREADS=8 make minimal
   '';
 
   # installPhase = ''
