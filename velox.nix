@@ -42,8 +42,8 @@ pkgs.stdenv.mkDerivation {
     NUM_THREADS=8 make minimal
   '';
 
-  # installPhase = ''
-  #   cd build
-  #   make install
-  # '';
+  installPhase = ''
+    mkdir $out
+    cp -r _build/release $out
+  '';
 }
