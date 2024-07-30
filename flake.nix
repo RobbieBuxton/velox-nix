@@ -12,8 +12,15 @@
         inherit system;
         overlays = [ (import ./overlays.nix) ];
       };
+      velox = pkgs.callPackage ./velox.nix {};
     in
     {
-      packages.${system}.default = pkgs.callPackage ./velox.nix {};
+      packages.${system} = {
+        default = velox;
+        velox = velox;
+      };
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [ velox ];
+      };
     };
 }
